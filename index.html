@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Grade Calculator</title>
+    <meta name="description" content="Aplikasi Kalkulator Nilai Offline">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Grade Calculator</div>
+        <div class="header-controls">
+            <span id="network-status" class="status-online">● Online</span>
+            <button id="install-btn" class="btn-sm hidden">Install App</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- View Calculator -->
+        <section id="view-calculator" class="card view-section active">
+            <div class="section-header">
+                <h2>Kalkulator</h2>
+                <div class="actions">
+                    <button id="btn-manage-rules" class="btn-secondary">Rule Set</button>
+                    <button id="btn-reset-scores" class="btn-danger">Reset</button>
+                </div>
+            </div>
+
+            <div class="rule-selector">
+                <label for="rule-set-select">Rule Set Aktif:</label>
+                <select id="rule-set-select"></select>
+            </div>
+
+            <div id="calculator-content" class="calc-container">
+                <!-- Dynamically populated based on active rule set -->
+            </div>
+
+            <div class="final-score-panel">
+                <div class="score-info">
+                    <h3>NILAI AKHIR</h3>
+                    <div id="total-weight-display">Total Bobot: 0%</div>
+                </div>
+                <div id="final-score-display">0.00</div>
+            </div>
+        </section>
+
+        <!-- View Rule Management -->
+        <section id="view-rules" class="card view-section hidden">
+            <div class="section-header">
+                <h2>Manajemen Rule Set</h2>
+                <button id="btn-back-calc" class="btn-secondary">Kembali</button>
+            </div>
+
+            <div class="rules-actions">
+                <button id="btn-create-rule" class="btn-primary">Buat Baru</button>
+                <button id="btn-import-rule" class="btn-secondary">Import JSON</button>
+                <button id="btn-export-rule" class="btn-secondary">Export JSON</button>
+                <input type="file" id="import-file" accept=".json" class="hidden">
+            </div>
+
+            <div id="rules-list" class="rules-list-container">
+                <!-- List of rule sets -->
+            </div>
+        </section>
+
+        <!-- View Edit Rule Set -->
+        <section id="view-edit-rule" class="card view-section hidden">
+            <div class="section-header">
+                <h2 id="edit-rule-title">Edit Rule Set</h2>
+                <button id="btn-cancel-edit" class="btn-secondary">Batal</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="rule-name">Nama Rule Set:</label>
+                <input type="text" id="rule-name" placeholder="Misal: MK Mobile">
+            </div>
+            
+            <div class="form-actions">
+                <button id="btn-add-group" class="btn-secondary">+ Group</button>
+                <button id="btn-add-component" class="btn-secondary">+ Component</button>
+            </div>
+
+            <div id="edit-rule-items" class="rule-items-container">
+                <!-- Group and components editor -->
+            </div>
+            
+            <div class="validation-panel" id="rule-validation">
+                ✓ Bobot valid: 100%
+            </div>
+
+            <div class="form-actions right">
+                <button id="btn-save-rule" class="btn-primary w-full">Simpan Rule Set</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/rules.js"></script>
+    <script src="js/import-export.js"></script>
+    <script src="js/pwa.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
